@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> converter</title>
+
+        
+    </head>
+    <body style = "background-image: url(purplebg.jpg); background-size: cover;">
+        
+      <h1 style="text-align: center;">WELCOME TO DECIMAL TO BINARY CONVERTOR</h1>
+         <div style=" width :500px; height: 500px; left:0; right:0; border:5px;margin: auto; position:absolute; top:0; bottom: 0;">
+         
+            <h3>
+            <label for="decimal"> Enter decimal value-</label>
+            <input type="number" id="decimal" name="decimal" />
+            <br>
+            <button onclick="dtob()"> submit</button>
+            <p id="ansd"> </p>
+            </h3>
+            <br>
+            <br>
+            
+            <h3><label for="binary"> Enter binary value-</label>
+            <input type="number" id="binary" name="binary" />
+            
+            <br>
+            <button onclick="btod()"> submit</button>
+            <p id="ansb"></p>
+            </h3>
+            
+            <br> <br>
+            <script>
+               
+               function dtob(){
+                    var n=document.getElementById("decimal").value;
+                    var s="";
+                    while (n>1)
+                    {
+                       s+=String(n%2);
+                       n=Number.parseInt(n/2);
+                    }
+                    s+=n;
+                   
+                    var a=s.split("");
+                    a=a.reverse();
+                    s=a.join("");
+                    console.log(s);
+                    document.getElementById("ansd").innerHTML= s ;
+                     
+               }
+                   
+               function btod(){
+                var s= document.getElementById("binary").value;
+                var a=s.split("");
+                a=a.reverse();
+                s=a.join("");
+                l=s.length;
+                n=0
+                var flag=1
+                for (var i =0 ; i<l;i++)
+                {  if (!(Number.parseInt(s[i]) == 0 || Number.parseInt(s[i]) == 1))
+                     { 
+                        flag=0;
+                        break;
+                     }
+
+                    n+= Math.pow(2,i)*Number.parseInt(s[i]);
+
+                }
+                if (flag ==1)
+                     document.getElementById("ansb").innerHTML= n;
+                else 
+                      document.getElementById("ansb").innerHTML= "wrong input";
+                
+                
+               }
+                
+            </script>
+         </div>
+    </body>
+</html>
